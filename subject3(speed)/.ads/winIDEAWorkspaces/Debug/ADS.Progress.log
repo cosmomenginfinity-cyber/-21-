@@ -1,0 +1,18 @@
+LOADING	D:\tc387\TC387_Library-master\Example\Example_dual_camera\Motherboard_Demo\subject3(ultaman)\Debug\subject3.elf
+EMULATION	Probe - System; Root
+EMULATION	Initial debug frequency set
+EMULATION	Asserting reset
+EMULATION	Connected to SoC/core(s)
+EMULATION	Finished connecting to SoC
+EMULATION	Releasing reset
+EMULATION	Initialization script (if any) done
+No RAM which needs initialization found
+EMULATION	Final debug frequency set
+EMULATION	SoC ID match OK
+SoC	Detected device: TC380 series, rev. AE
+EMULATION	STARTED
+PROGRAMMING 	160370 bytes
+PROGRAMMING	Infineon TC38x_PFLASH_10MB (17 sectors)
+SoC	Detected device: TC100 series, rev. AA
+SoC	SMP requirements not satisfied. Check multi-core synchronization settings.
+EMULATION	END - Not attempting cleanup

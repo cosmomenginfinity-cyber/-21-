@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//code/asr_ctrl.h=UTF-8
+encoding//code/back_ins.c=UTF-8
+encoding//code/back_ins.h=UTF-8
+encoding//code/color_vision.c=UTF-8
+encoding//code/color_vision.h=UTF-8
+encoding//code/encoder_motor_ctl.c=UTF-8
+encoding//code/imu_ahrs.c=UTF-8
+encoding//code/imu_ahrs.h=UTF-8
+encoding//code/initialize.h=UTF-8
+encoding//code/key_mode.c=UTF-8
+encoding//code/menu.c=UTF-8
+encoding//code/xf_asr/asr_audio.c=UTF-8
+encoding//code/\u4FEE\u6539\u8BF4\u660E.txt=UTF-8
+encoding//user/cpu1_main.c=UTF-8
+encoding//user/cpu3_main.c=UTF-8
+encoding//user/isr.c=UTF-8

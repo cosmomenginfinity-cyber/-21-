@@ -1,0 +1,21 @@
+科目三专用代码（注释版）
+==========================
+
+处理原则：
+1. menu.c / menu.h 按要求保持不变。
+2. 不删除科目一、科目二代码，使用 #if 0 ... #endif 进行编译屏蔽。
+3. 实际运行只保留：MODE_RC、MODE_INS_TRACK_THREE、MODE_CENTERING、MODE_STOP。
+4. CCU60_CH0 仍以10ms周期更新编码器、IMU、舵机和后轮控制。
+
+主要修改文件：
+- initialize.c：屏蔽 ins_init()，保留 back_ins_init()。
+- cpu0_main.c、cpu2_main.c：屏蔽科目二语音头文件。
+- isr.c：屏蔽 MODE_INS_TRACK 和 audio_callback；科目三不再依赖 g_ins_neutral_glide。
+- pathrecorder.c/.h：修复255点回绕、重复录制final参考点不复位、初始点计数不同步。
+- flash.h：按实际页容量计算最大记录数，避免访问不存在的第64页。
+
+没有修改：menu.c / menu.h、back_ins返航算法、PID与速度参数。
+
+建议流程：Clear Flash -> Subject 3 Record -> KEY4 -> Save -> 保持车头方向不变 -> Back Run。
+
+注意：菜单仍保留科目一、科目二入口；本版按要求不改菜单，因此运行时只选择Subject 3。

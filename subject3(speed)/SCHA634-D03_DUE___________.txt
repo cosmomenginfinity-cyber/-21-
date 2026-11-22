@@ -1,0 +1,29 @@
+SCHA634-D03（仅 DUE）接线
+========================
+
+DUE_SCK   -> TC387 P20.11
+DUE_MOSI  -> TC387 P20.14
+DUE_MISO  -> TC387 P20.12
+DUE_CSB   -> TC387 P20.13
+VDD/VDDIO -> 按模块要求供电
+GND       -> TC387 GND（必须共地）
+
+不需要连接 UNO_CSB。本工程不会访问 UNO。
+
+软件改动
+========
+
+1. code/imu_ahrs.c 已从 IMU660RA 改为 SCHA634-D03 DUE。
+2. libraries/zf_device/zf_device_scha634.c 使用 32 位 off-frame SPI，
+   并校验 CRC、RS 返回状态、响应地址以及 DUE ASIC 身份。
+3. 控制周期仍为 user/isr.c 中的 10 ms（100 Hz）PIT 中断。
+4. 航向角使用 DUE Rate-Z 零偏校准后纯积分；位置接口保持不变。
+5. DUE 没有 Rate-X 和三轴加速度，因此 Roll/Pitch 和加速度字段固定为 0，
+   不再运行原来依赖六轴数据的 Mahony 解算。
+
+上电注意
+========
+
+调用 imu_ahrs_init() 时只启动传感器；随后由 10 ms 控制中断后台分批采集
+2000 个有效样本校准零偏，正常约 2 秒完成。校准期间车辆和传感器必须保持静止；
+车辆移动时会暂停采样。初始化或帧校验失败时不会更新航向角，也不会阻塞遥控。
